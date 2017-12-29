@@ -24,9 +24,5 @@ javap -v -p LambdaDemo
 
 可以看到第一条指令为Invokeddynamic\(实际值在“Constant pool"的\#2）。
 
-![](/assets/consumerinvokeDynamic.png)"\#0"表明指向的是第一个BootstrapMethod。"accept"是invokedName,"\(\)Ljava/util/function/Consumer"是invokedType。二者合为NameAndType。
-
-![](/assets/bootstrapmethod0.png)
-
-
+![](/assets/consumerinvokeDynamic.png)"\#0"表明指向的是第一个BootstrapMethod。"accept"是invokedName,"\(\)Ljava/util/function/Consumer"是invokedType。二者合为NameAndType。![](/assets/bootstrapmethod0.png)
 
