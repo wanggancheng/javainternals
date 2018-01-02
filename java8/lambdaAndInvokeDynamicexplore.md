@@ -32,11 +32,23 @@ public class com.github.wanggancheng.LambdaDemo {
 }
 ```
 
-   除了类的构造函数及main方法外，多了一个名为lambda$main$0的静态方法。此静态方法的参数为java.lang.String类型。
+除了类的构造函数及main方法外，多了一个名为lambda$main$0的静态方法。此静态方法的参数为java.lang.String类型。
 
-   下面我们通过对字节码的分析来理解背后的密码。
+下面我们通过对字节码的分析来理解背后的密码。
 
-可以看到第一条指令为Invokeddynamic\(实际值在“Constant pool"的\#2）。
+  让我们来看看main方法的字节码吧。![](/assets/consumerinvokeDynamic.png)从offset为0开始，第一条字节码信息为：CONSTANT\__InvokeDynamic_info。它在常量池中的位置为2（\#2）
 
-![](/assets/consumerinvokeDynamic.png)"\#0"表明指向的是第一个BootstrapMethod。"accept"是invokedName,"\(\)Ljava/util/function/Consumer"是invokedType。二者合为NameAndType。
+```java
+  #2 = InvokeDynamic      #0:#36         // #0:accept:()Ljava/util/function/Consumer;
+```
+
+    它主要由两部分组成。
+
+     第一部分为bootstra_p\_method\_attr\_index,也就是指定了bootstrap\_methods\[\]数组中的合法索引。在这里的\#0表示指向了bootstrap\_methods数组中第1个bootstrap\_method。_
+
+"accept"是invokedName,"\(\)Ljava/util/function/Consumer"是invokedType。二者合为NameAndType。
+
+BootstramMethod是一种什么结构呢。
+
+
 
