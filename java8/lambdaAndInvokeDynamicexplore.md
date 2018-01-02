@@ -63,7 +63,7 @@ public class com.github.wanggancheng.LambdaDemo {
 
 "accept"是invokedName,"\(\)Ljava/util/function/Consumer"是invokedType。二者合为NameAndType。
 
- 接下来，我们看看bootstrap_methods。它的结构定义如下：_
+接下来，我们看看bootstrap_methods。它的结构定义如下：_
 
 ```java
 BootstrapMethods_attribute {
@@ -90,5 +90,46 @@ BootstrapMethods:
       #35 (Ljava/lang/String;)V
 ```
 
+从上面可知，bootstrap_method_ref为\#32，它在常量池的内容如下：
 
+```java
+#30 = NameAndType #9:#10 // "<init>":()V
+#31 = Utf8 BootstrapMethods
+#32 = MethodHandle #6:#46 // invokestatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+#33 = MethodType #47 // (Ljava/lang/Object;)V
+#34 = MethodHandle #6:#48 // invokestatic com/github/wanggancheng/LambdaDemo.lambda$main$0:(Ljava/lang/String;)V
+#35 = MethodType #25 // (Ljava/lang/String;)V
+#36 = NameAndType #49:#50 // accept:()Ljava/util/function/Consumer;
+#37 = Utf8 Lambda demo
+#38 = Class #51 // java/util/function/Consumer
+#39 = NameAndType #49:#47 // accept:(Ljava/lang/Object;)V
+#40 = Class #52 // java/lang/System
+#41 = NameAndType #53:#54 // out:Ljava/io/PrintStream;
+#42 = Class #55 // java/io/PrintStream
+#43 = NameAndType #56:#25 // println:(Ljava/lang/String;)V
+#44 = Utf8               com/github/wanggancheng/LambdaDemo
+#45 = Utf8               java/lang/Object
+#46 = Methodref          #57.#58        // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+#47 = Utf8               (Ljava/lang/Object;)V
+#48 = Methodref          #7.#59         // com/github/wanggancheng/LambdaDemo.lambda$main$0:(Ljava/lang/String;)V
+#49 = Utf8               accept
+#50 = Utf8               ()Ljava/util/function/Consumer;
+#51 = Utf8               java/util/function/Consumer
+#52 = Utf8               java/lang/System
+#53 = Utf8               out
+#54 = Utf8               Ljava/io/PrintStream;
+#55 = Utf8               java/io/PrintStream
+#56 = Utf8               println
+#57 = Class              #60            // java/lang/invoke/LambdaMetafactory
+#58 = NameAndType        #61:#65        // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+#59 = NameAndType        #24:#25        // lambda$main$0:(Ljava/lang/String;)V
+#60 = Utf8               java/lang/invoke/LambdaMetafactory
+#61 = Utf8               metafactory
+#62 = Class              #67            // java/lang/invoke/MethodHandles$Lookup
+#63 = Utf8               Lookup
+#64 = Utf8               InnerClasses
+#65 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+```
+
+其实是一个MethodHandle。一个MethodHandle主要由方法句柄类型reference\_kind,
 
