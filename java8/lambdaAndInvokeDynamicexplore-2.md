@@ -16,5 +16,7 @@
 
 这些参数中，除了ｃaller参数外，其它都是从java类文件中可以直接获取到的或包装了而已。没有印象可以查看第一篇文章。
 
+　　跟进到ＩnnerClassLambdaFactory的spinInnerClass方法中去。
+
 
 
