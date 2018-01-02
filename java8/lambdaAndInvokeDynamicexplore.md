@@ -90,7 +90,7 @@ BootstrapMethods:
       #35 (Ljava/lang/String;)V
 ```
 
-从上面可知，bootstrap_method_ref为\#32，它在常量池的内容如下：
+从上面可知，bootstrap\_method\_ref为\#32，它在常量池的内容如下：
 
 ```java
 #30 = NameAndType #9:#10 // "<init>":()V
@@ -131,5 +131,7 @@ BootstrapMethods:
 #65 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
 ```
 
-其实是一个MethodHandle。一个MethodHandle主要由方法句柄类型reference\_kind,
+其实是一个MethodHandle。一个MethodHandle主要由方法句柄类型reference_kind及对应的引用类型reference\_index。在这里引用类型为invoke\_static，引用索引则响应的指向一个静态方法。这个静态方法为_/LambdaMetafactory.metafactory。
+
+第1个bootstrap\_method需要三个参数，分别为\#33，\#34，\#35指向的类型。这是与LambdaMetaFactory.metafactory的最后三个参数一致的。
 
