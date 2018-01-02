@@ -32,9 +32,11 @@
 
 ![](/assets/sambuildview.png)　　继续跟踪到ForwardingMethodGenerator类的ｇｅｎｅrate方法中。此方法中通过方法：visitMethodInsn生成调用
 
-lambda$main$0静态方法的字节代码。　
+lambda$main$0静态方法的字节代码。
 
-最终，dump出InnerClass的地方是在InvokerBytecodeGenerator的maybeDump方法中。
+最终，dump出InnerClass的地方是InnerClassLambdaMetaFactory的buildCallSite方法中。
 
-![](/assets/maybedump.png)
+![](/assets/dumpclass.png)
+
+
 
