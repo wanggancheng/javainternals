@@ -16,7 +16,25 @@
 
 这些参数中，除了ｃaller参数外，其它都是从java类文件中可以直接获取到的或包装了而已。没有印象可以查看第一篇文章。
 
-　　跟进到ＩnnerClassLambdaFactory的spinInnerClass方法中去。
+跟踪到InnerClassLambdaMetaFactory的实例创建过程。
+
+![](/assets/InnerClassMetaFactorystaticinit.png)
+
+　　上篇文章中Dump出InnerClass的开关参数就是在InnerClassLambdaMetaFactory的类静态初始化语句块中设置的。
+
+　　继续跟踪到可以看到执行到下列代码块。
+
+![](/assets/lambdaClassName.png)　　从上图可以看出ＬambdaClasName的值是如何生成的。
+
+　　跟进到ＩnnerClassLambdaFactory的ｂuildCallSite方法中，可以看到如下逻辑：
+
+![](/assets/Constructor.png)
+
+
+
+最终，dump出InnerClass的地方是在InvokerBytecodeGenerator的maybeDump方法中。
+
+![](/assets/maybedump.png)
 
 
 
