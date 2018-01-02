@@ -24,13 +24,15 @@
 
 继续跟踪到可以看到执行到下列代码块。
 
-![](/assets/lambdaClassName.png)　　从上图可以看出ＬambdaClasName的值是如何生成的。ＩmplMethodName就是
+![](/assets/lambdaClassName.png)　　从上图可以看出ＬambdaClasName的值是如何生成的。ＩmplMethodName就是“lambda$main$0”。这名称就是第一章中提到到自动添加的方法名。
 
 跟进到ＩnnerClassLambdaFactory的ｂuildCallSite方法中，可以看到如下逻辑：
 
 ![](/assets/Constructor.png)继续跟踪，可以看到如下代码。
 
-![](/assets/sambuildview.png)
+![](/assets/sambuildview.png)　　继续跟踪到ForwardingMethodGenerator类的ｇｅｎｅrate方法中。此方法中通过方法：visitMethodInsn生成调用
+
+lambda$main$0静态方法的字节代码。　
 
 最终，dump出InnerClass的地方是在InvokerBytecodeGenerator的maybeDump方法中。
 
