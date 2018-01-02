@@ -1,4 +1,4 @@
-# Java Lambda及InvokedDynamic调用探秘
+# Java Lambda及InvokedDynamic调用探秘（一）
 
 我们先来看看一个java Lambda的简单实例。
 
@@ -135,11 +135,11 @@ BootstrapMethods:
 
 第1个bootstrap\_method需要三个参数，分别为\#33，\#34，\#35指向的类型。这是与LambdaMetaFactory.metafactory的最后三个参数一致的。
 
-  从第1个bootstrap\_method来看，最终会调用到编译器自动新增的方法：com/github/wanggancheng/LambdaDemo.lambda$main$0。
+从第1个bootstrap\_method来看，最终会调用到编译器自动新增的方法：com/github/wanggancheng/LambdaDemo.lambda$main$0。
 
-  那么，最终是如何调用到这个静态方法内。在运行是添加一个参数：-Djdk.internal.lambda.dumpProxyClasses
+那么，最终是如何调用到这个静态方法内。在运行是添加一个参数：-Djdk.internal.lambda.dumpProxyClasses
 
-  在执行过程中会生成名为com.github.wanggancheng.LambdaDemo$$Lambda$1的class文件。反编译此类的内容如下：
+在执行过程中会生成名为com.github.wanggancheng.LambdaDemo$$Lambda$1的class文件。反编译此类的内容如下：
 
 ```java
 package com.github.wanggancheng;
@@ -159,9 +159,5 @@ final class LambdaDemo$$Lambda$1 implements Consumer {
 }
 ```
 
-  也就是说，consumer.accept\("Lambda demo"\)执行过程中最终会调用到LambdaDemo$$Lambda$1的accept方法，方法中会调用到前面说到的自动新增的方法的。
-
-
-
-
+也就是说，consumer.accept\("Lambda demo"\)执行过程中最终会调用到LambdaDemo$$Lambda$1的accept方法，方法中会调用到前面说到的自动新增的方法的。
 
