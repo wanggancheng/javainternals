@@ -56,7 +56,7 @@ BootstrapMethods:
 
 从第１个bootstrapmethod来看，与第１篇文章中的示例的bootstrapmethod的差异是第２个参数。先前的实例中第２个参数是调用编译器自动生成的一个静态方法ambda$main$0。
 
-　　我们来看看一个稍复杂的例子。
+我们来看看一个稍复杂的例子。
 
 ```java
 package com.github.wanggancheng;
@@ -77,7 +77,7 @@ public class InvokeDynamicInstanceMethodDemo {
 }
 ```
 
-　反编译此类的class文件，可以发现也没有添加新方法。还是重点来看看bootstrap\_method方法信息。
+反编译此类的class文件，可以发现也没有添加新方法。还是重点来看看bootstrap\_method方法信息。
 
 ```java
 BootstrapMethods:
@@ -98,7 +98,7 @@ invokedynamice\_info的信息如下：
 
 从上面的信息可以看出，与先前的示例的主要差别为invokedType中包含实例方法引用的类实例作为参数。
 
-　我们在运行时把自动生成的类dump出来，反编译信息如下。
+我们在运行时把自动生成的类dump出来，反编译信息如下。
 
 ```java
 package com.github.wanggancheng;
@@ -123,8 +123,17 @@ final class InvokeDynamicInstanceMethodDemo$$Lambda$1 implements Consumer {
         this.arg$1.output((String)var1);
     }
 }
-
 ```
+
+这个自动合成的类之构造方法有一个InvokeDynamicInstanceMethodDemo。这个参数就是Consumer引用的实例方法对应的类实例。
+
+  跟踪到InnerClassLambdaMetaFactory的buildCallSite方法。
+
+CallSite最终指向的Ｍethod为NAME\_FACTORY。这个常量固定为"get$Lambda"。
+
+
+
+
 
 
 
